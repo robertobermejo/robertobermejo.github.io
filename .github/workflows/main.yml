@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Update submodules
-      run: git submodule update
+      run: git submodule update --init --recursive
     - name: Build the site in the robertobermejo/hugo container
       run: |
         docker run \
