@@ -21,6 +21,7 @@ jobs:
       run: git submodule update --init --recursive
     - name: Auto Commit changed files
       uses: stefanzweifel/git-auto-commit-action@v2.1.0
-      branch: master
+      with:
+        branch: master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
