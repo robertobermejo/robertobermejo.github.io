@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - editor
+    - content/*
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the site in the robertobermejo/hugo container
+      run: |
+        docker run \
+        -v ${{ github.workspace }}:/srv/ \
+        robertobermejo/hugo:latest -s /srv
