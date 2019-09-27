@@ -16,6 +16,11 @@ jobs:
       run: git submodule update --init --recursive
     - name: Build the site in the robertobermejo/hugo container
       run: |
-        docker run \
-        -v ${{ github.workspace }}:/srv/ \
-        robertobermejo/hugo:latest -s /srv
+        docker run -v ${{ github.workspace }}:/srv/ robertobermejo/hugo:latest -s /srv
+    - name: Update submodules
+      run: git submodule update --init --recursive
+    - name: Auto Commit changed files
+      uses: stefanzweifel/git-auto-commit-action@v2.1.0
+      branch: master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
