@@ -4,7 +4,6 @@ on:
   push:
     branches:
     - editor
-    - content/*
 
 jobs:
   build:
@@ -13,6 +12,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
+    - name: Update submodules
+      run: git submodule update
     - name: Build the site in the robertobermejo/hugo container
       run: |
         docker run \
