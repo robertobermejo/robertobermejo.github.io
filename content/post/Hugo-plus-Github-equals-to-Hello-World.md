@@ -1,7 +1,7 @@
 ---
 title: "Hugo Plus Github Equals to Hello World"
 date: 2019-09-22T13:05:18+02:00
-draft: true
+draft: false
 coverMeta: out
 tags:
 - content
@@ -52,3 +52,82 @@ git commit -m "Add first post"
 {{< /codeblock >}}
 
 And that's setup Hugo with a first post.
+
+## Setting up Github & Github actions
+
+Tip: Create a repository on Github before anything.
+
+As it says a little higher, I want to publish automatically the changes when I push the editor branch to Github.
+Hugo create the content on public folder, so, I need to make this folder as [orphan branch](https://git-scm.com/docs/git-checkout/#git-checkout---orphanltnewbranchgt). I follow [this steps](https://gohugo.io/hosting-and-deployment/hosting-on-github/#preparations-for-gh-pages-branch) but with some changes.
+{{< codeblock "shell" >}}
+# Ensure that I am on editor branch
+git branch
+# Add Github repository as origin
+git remote add origin git@github.com:robertobermejo/robertobermejo.github.io.git
+# Push editor branch to github
+git push origin editor
+# Ignore public folder
+echo "public" >> .gitignore
+# Initialize master branch
+git checkout --orphan master
+git reset --hard
+# In my case, I need to remove themes folder becouse I use this as subdoule
+rm -rf themes
+# Commit and push master branch
+git commit --allow-empty -m "Initializing master branch"
+git push origin master
+# Change to editor branch and restore theme folder
+git checkout editor
+git submodule update
+{{< /codeblock >}}
+
+If you want to use a custom domain on github, you must create and commit a file on master branch name "CNAME". The content of this file must be the domain that you want to use. On my case
+{{< codeblock "text" >}}
+robertobermejo.es
+{{< /codeblock >}}
+
+On the github repository, it's presented the following option.
+{{< image classes="fancybox" src="/github/page_settings_before.png" thumbnail-width="80%" title="Image of github settings before activate that option" >}}
+It's needed that mark master as default branch for the site
+{{< image classes="fancybox" src="/github/page_settings_selected.png" thumbnail-width="80%" title="Image of github selecting the master branch as branch for github pages" >}}
+Finally, if the CNAME file is uploaded, the following picture should appear
+{{< image classes="fancybox" src="/github/page_settings_domain.png" thumbnail-width="80%" title="Image of github settings after activate the branch and setting the custom domain option" >}}
+
+Now, It's time to configure github actions.
+For that, we need a docker image. The "official" image that I see on [Docker hub](https://hub.docker.com/r/gohugoio/hugo) it's outdated, for this reason I upload a new image on [my account](https://hub.docker.com/r/robertobermejo/hugo).
+
+As I want to use a custom image, It's needed to add the file ".github/workflow/main.yml" on the repository with the following code:
+{{< codeblock "yaml" >}}
+name: CI
+
+on:
+  push:
+    branches:
+    - editor
+    - content/*
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the site in the robertobermejo/hugo container
+      run: |
+        docker run -v ${{ github.workspace }}:/srv/ robertobermejo/hugo:latest -s /srv
+
+{{< /codeblock >}}
+
+Don't forget to commit the changes.
+{{< codeblock "shell" >}}
+git add .github
+git commit -m "Add github actions setup"
+git push origin editor
+{{< /codeblock >}}
+
+Some minutes later on github actions should have the following appear.
+
+{{< image classes="fancybox" src="/github/actions_configured.png" thumbnail-width="80%" title="Image of github settings after activate the branch and setting the custom domain option" >}}
+
+And that's all.
