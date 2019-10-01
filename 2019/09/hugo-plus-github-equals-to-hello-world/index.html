@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="es-es">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.58.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Roberto Bermejo">
+<meta name="keywords" content=", development, next-gen">
+<meta name="description" content="Objetive I want to publish some content on my blog using some content generator, and I don&rsquo;t want to hire a hosting. I can use Wordpress, but I prefere to use some tecnlogies that let me know new ways of publish content.
+So, I will use Hugo for this pourpose. There are a lot of tools like Jekyllrb, Ghost, Grav, Pelican and more alternatives.
+The last step will be setup Github actions.">
+
+
+<meta property="og:description" content="Objetive I want to publish some content on my blog using some content generator, and I don&rsquo;t want to hire a hosting. I can use Wordpress, but I prefere to use some tecnlogies that let me know new ways of publish content.
+So, I will use Hugo for this pourpose. There are a lot of tools like Jekyllrb, Ghost, Grav, Pelican and more alternatives.
+The last step will be setup Github actions.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hugo Plus Github Equals to Hello World">
+<meta name="twitter:title" content="Hugo Plus Github Equals to Hello World">
+<meta property="og:url" content="https://robertobermejo.es/2019/09/hugo-plus-github-equals-to-hello-world/">
+<meta property="twitter:url" content="https://robertobermejo.es/2019/09/hugo-plus-github-equals-to-hello-world/">
+<meta property="og:site_name" content="Roberto Blog">
+<meta property="og:description" content="Objetive I want to publish some content on my blog using some content generator, and I don&rsquo;t want to hire a hosting. I can use Wordpress, but I prefere to use some tecnlogies that let me know new ways of publish content.
+So, I will use Hugo for this pourpose. There are a lot of tools like Jekyllrb, Ghost, Grav, Pelican and more alternatives.
+The last step will be setup Github actions.">
+<meta name="twitter:description" content="Objetive I want to publish some content on my blog using some content generator, and I don&rsquo;t want to hire a hosting. I can use Wordpress, but I prefere to use some tecnlogies that let me know new ways of publish content.
+So, I will use Hugo for this pourpose. There are a lot of tools like Jekyllrb, Ghost, Grav, Pelican and more alternatives.
+The last step will be setup Github actions.">
+<meta property="og:locale" content="es-es">
+
+  
+    <meta property="article:published_time" content="2019-09-22T13:05:18">
+  
+  
+    <meta property="article:modified_time" content="2019-09-22T13:05:18">
+  
+  
+  
+  
+    
+      <meta property="article:tag" content="content">
+    
+      <meta property="article:tag" content="devops">
+    
+      <meta property="article:tag" content="hugo">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@roberbermejo">
+
+
+  <meta name="twitter:creator" content="@roberbermejo">
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/218b05d6600c9c1ca2a09135881e0e63?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/218b05d6600c9c1ca2a09135881e0e63?s=640">
+
+
+    <title>Hugo Plus Github Equals to Hello World</title>
+
+    <link rel="icon" href="https://robertobermejo.es/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://robertobermejo.es/2019/09/hugo-plus-github-equals-to-hello-world/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://robertobermejo.es/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://robertobermejo.es/">Roberto Blog</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://robertobermejo.es/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://www.gravatar.com/avatar/218b05d6600c9c1ca2a09135881e0e63?s=90" alt="Foto de autor" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://robertobermejo.es/#about">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/218b05d6600c9c1ca2a09135881e0e63?s=110" alt="Foto de autor" />
+        </a>
+        <h4 class="sidebar-profile-name">Roberto Bermejo</h4>
+        
+          <h5 class="sidebar-profile-bio">Super bio with markdown support <strong>COOL</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://robertobermejo.es/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Inicio</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://robertobermejo.es/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categorías</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://robertobermejo.es/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Etiquetas</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://robertobermejo.es/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archivos</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://robertobermejo.es/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Acerca de</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/robertobermejo" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://stackoverflow.com/users/4753805/roberto-bermejo-martinez" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+      
+      <span class="sidebar-button-desc">Stack Overflow</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://robertobermejo.es/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="5"
+        class="
+               hasCoverMetaOut
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Hugo Plus Github Equals to Hello World
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-09-22T13:05:18&#43;02:00">
+        
+  
+  
+  
+  
+    22 Septiembre 2019
+  
+
+      </time>
+    
+    
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
+
+<hr />
+
+<h1 id="objetive">Objetive</h1>
+
+<p>I want to publish some content on my blog using some content generator, and I don&rsquo;t want to hire a hosting. I can use <a href="http://wordpress.com">Wordpress</a>, but I prefere to use some tecnlogies that let me know new ways of publish content.</p>
+
+<p>So, I will use <a href="https://gohugo.io/">Hugo</a> for this pourpose. There are a lot of tools like <a href="https://jekyllrb.com">Jekyllrb</a>, <a href="https://ghost.org">Ghost</a>, <a href="https://getgrav.org">Grav</a>, <a href="http://getpelican.com">Pelican</a> and <a href="https://alternativeto.net/software/hugo/">more alternatives</a>.</p>
+
+<p>The last step will be setup Github actions. When I push the editor branch, on master must be published the public content.</p>
+
+<h2 id="creating-the-proyect">Creating the proyect.</h2>
+
+<p>The first thing that I need to to is install the dependencies, prepare the repository and commit the base configuration on the editor branch.</p>
+
+<p>
+  
+    
+  
+  
+  
+  
+
+
+<figure class="highlight  language-">
+  <figcaption>
+    
+      <span>shell</span>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-"><code class=""># Install hugo on mac using Brew
+brew install hugo
+# Create new hugo site
+hugo new site Blog
+# Initialize git repository
+cd Blog &amp; git init
+# Add all files for initial commit on editor branch
+git checkout -b editor
+git add *
+git commit -m &#34;Initial commit&#34;</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+The next step is select a <a href="hugo-tranquilpeak-theme">theme</a> and create some content (like this post).
+
+  
+    
+  
+  
+  
+  
+
+
+<figure class="highlight  language-">
+  <figcaption>
+    
+      <span>shell</span>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-"><code class=""># Add theme as git submodule
+git submodule add https://github.com/kakawait/hugo-tranquilpeak-theme.git themes/hugo-tranquilpeak
+# Copy default configuration and update with my custom parameters
+cp themes/tranquilpeak/exampleSite/config.toml .
+vim config.toml
+# Commit this changes
+git add .gitmodules themes/hugo-tranquilpeak config.toml
+git commit &#34;Add Hugo Tranquilpeak theme and update configuration&#34;
+# Create this post, and add some summary content
+hugo new content/post/Hugo-plus-Github-equals-to-Hello-World.md
+git add content/
+git commit -m &#34;Add first post&#34;</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure></p>
+
+<p>And that&rsquo;s setup Hugo with a first post.</p>
+
+<h2 id="setting-up-github-github-actions">Setting up Github &amp; Github actions</h2>
+
+<p>Tip: Create a repository on Github before anything.</p>
+
+<p>As said before, I want to publish automatically the changes when I push the editor branch to Github.
+Hugo creates the content on public folder, so, I need to make this folder as <a href="https://git-scm.com/docs/git-checkout/#git-checkout---orphanltnewbranchgt">orphan branch</a>. I will follow <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/#preparations-for-gh-pages-branch">this steps</a> but with some changes.
+
+  
+    
+  
+  
+  
+  
+
+
+<figure class="highlight  language-">
+  <figcaption>
+    
+      <span>shell</span>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-"><code class=""># Ensure that I am on editor branch
+git branch
+# Add Github repository as origin
+git remote add origin git@github.com:robertobermejo/robertobermejo.github.io.git
+# Push editor branch to github
+git push origin editor
+# Ignore public folder
+echo &#34;public&#34; &gt;&gt; .gitignore
+# Initialize master branch
+git checkout --orphan master
+git reset --hard
+# In my case, I need to remove themes folder becouse I use this as submodule
+rm -rf themes
+# Commit and push master branch
+git commit --allow-empty -m &#34;Initializing master branch&#34;
+git push origin master
+# Change to editor branch and restore theme folder
+git checkout editor
+git submodule update</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure></p>
+
+<p>If you want to use a custom domain on github, you must create and commit a file on master branch name &ldquo;CNAME&rdquo;. The content of this file must be the domain that you want to use. On my case
+
+  
+    
+  
+  
+  
+  
+
+
+<figure class="highlight  language-">
+  <figcaption>
+    
+      <span>text</span>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-"><code class="">robertobermejo.es</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure></p>
+
+<p>When you access to github repository settings page, the following option appears.
+
+
+ 
+  
+  
+  
+  
+    
+  
+
+<div class="figure " >
+  
+    <a class="fancybox" href="https://robertobermejo.es/github/page_settings_before.png" title="Image of github settings before activate that option" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://robertobermejo.es/github/page_settings_before.png" style="width: 80%;" alt="Image of github settings before activate that option">
+  
+    </a>
+  
+   
+    <span class="caption">Image of github settings before activate that option</span>
+  
+</div>
+
+It&rsquo;s needed that mark master as default branch for the site
+
+
+ 
+  
+  
+  
+  
+    
+  
+
+<div class="figure " >
+  
+    <a class="fancybox" href="https://robertobermejo.es/github/page_settings_selected.png" title="Image of github selecting the master branch as branch for github pages" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://robertobermejo.es/github/page_settings_selected.png" style="width: 80%;" alt="Image of github selecting the master branch as branch for github pages">
+  
+    </a>
+  
+   
+    <span class="caption">Image of github selecting the master branch as branch for github pages</span>
+  
+</div>
+
+Finally, if the CNAME file is uploaded, the following picture should appear
+
+
+ 
+  
+  
+  
+  
+    
+  
+
+<div class="figure " >
+  
+    <a class="fancybox" href="https://robertobermejo.es/github/page_settings_domain.png" title="Image of github settings after activatin the branch and setting the custom domain option" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://robertobermejo.es/github/page_settings_domain.png" style="width: 80%;" alt="Image of github settings after activatin the branch and setting the custom domain option">
+  
+    </a>
+  
+   
+    <span class="caption">Image of github settings after activatin the branch and setting the custom domain option</span>
+  
+</div>
+</p>
+
+<p>Now, It&rsquo;s time to configure github actions.
+For that, we need a docker image. The &ldquo;official&rdquo; image that I see on <a href="https://hub.docker.com/r/gohugoio/hugo">Docker hub</a> &ldquo;it&rsquo;s outdated, so I uploaded a new image on <a href="https://hub.docker.com/r/robertobermejo/hugo">my account</a>.</p>
+
+<p>As I want to use a custom image, It&rsquo;s needed to add the file &ldquo;.github/workflow/main.yml&rdquo; on the repository with the following code:
+
+  
+    
+  
+  
+  
+  
+
+
+<figure class="highlight  language-">
+  <figcaption>
+    
+      <span>yaml</span>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-"><code class="">name: CI
+
+on:
+  push:
+    branches:
+    - editor
+    - content/*
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the site in the robertobermejo/hugo container
+      run: |
+        docker run -v ${{ github.workspace }}:/srv/ robertobermejo/hugo:latest -s /srv</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure></p>
+
+<p>Don&rsquo;t forget to commit the changes.
+
+  
+    
+  
+  
+  
+  
+
+
+<figure class="highlight  language-">
+  <figcaption>
+    
+      <span>shell</span>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="code-highlight language-"><code class="">git add .github
+git commit -m &#34;Add github actions setup&#34;
+git push origin editor</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure></p>
+
+<p>Some minutes later, github&rsquo;s actions should have the following appearance.</p>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+
+<div class="figure " >
+  
+    <a class="fancybox" href="https://robertobermejo.es/github/actions_configured.png" title="Image of github settings after activating the branch and setting the custom domain option" data-fancybox-group="">
+  
+    <img class="fig-img" src="https://robertobermejo.es/github/actions_configured.png" style="width: 80%;" alt="Image of github settings after activating the branch and setting the custom domain option">
+  
+    </a>
+  
+   
+    <span class="caption">Image of github settings after activating the branch and setting the custom domain option</span>
+  
+</div>
+
+
+<p>And that&rsquo;s all.</p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">ETIQUETADO EN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://robertobermejo.es/tags/content/">content</a>
+
+  <a class="tag tag--primary tag--small" href="https://robertobermejo.es/tags/devops/">devops</a>
+
+  <a class="tag tag--primary tag--small" href="https://robertobermejo.es/tags/hugo/">hugo</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">SIGUIENTE</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">ANTERIOR</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://robertobermejo.es/2019/09/hugo-plus-github-equals-to-hello-world/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://robertobermejo.es/2019/09/hugo-plus-github-equals-to-hello-world/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 Roberto Bermejo. Todos los derechos reservados
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">SIGUIENTE</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">ANTERIOR</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://robertobermejo.es/2019/09/hugo-plus-github-equals-to-hello-world/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://robertobermejo.es/2019/09/hugo-plus-github-equals-to-hello-world/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Frobertobermejo.es%2F2019%2F09%2Fhugo-plus-github-equals-to-hello-world%2F">
+          <i class="fa fa-twitter"></i><span>Compartir en Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Frobertobermejo.es%2F2019%2F09%2Fhugo-plus-github-equals-to-hello-world%2F">
+          <i class="fa fa-google-plus"></i><span>Compartir en Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/218b05d6600c9c1ca2a09135881e0e63?s=110" alt="Foto de autor" />
+    
+    <h4 id="about-card-name">Roberto Bermejo</h4>
+    
+      <div id="about-card-bio">Super bio with markdown support <strong>COOL</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Backend Developer at Indexa Capital
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Spain
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://robertobermejo.es/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://robertobermejo.es/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/robertobermejo.es\/2019\/09\/hugo-plus-github-equals-to-hello-world\/';
+          
+            this.page.identifier = '\/2019\/09\/hugo-plus-github-equals-to-hello-world\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'robertobermejo';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

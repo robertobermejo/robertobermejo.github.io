@@ -6,9 +6,37 @@
     <description>Recent content in Tags on Roberto Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es-es</language>
+    <lastBuildDate>Sun, 22 Sep 2019 13:05:18 +0200</lastBuildDate>
     
 	<atom:link href="https://robertobermejo.es/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>content</title>
+      <link>https://robertobermejo.es/tags/content/</link>
+      <pubDate>Sun, 22 Sep 2019 13:05:18 +0200</pubDate>
+      
+      <guid>https://robertobermejo.es/tags/content/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>devops</title>
+      <link>https://robertobermejo.es/tags/devops/</link>
+      <pubDate>Sun, 22 Sep 2019 13:05:18 +0200</pubDate>
+      
+      <guid>https://robertobermejo.es/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://robertobermejo.es/tags/hugo/</link>
+      <pubDate>Sun, 22 Sep 2019 13:05:18 +0200</pubDate>
+      
+      <guid>https://robertobermejo.es/tags/hugo/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
