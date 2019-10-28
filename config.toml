@@ -18,7 +18,7 @@ defaultContentLanguage = "es-es"
 title = "Roberto Blog"
 theme = "hugo-tranquilpeak"
 disqusShortname = "robertobermejo"
-# googleAnalytics = "UA-123-45"
+googleAnalytics = "UA-42238303-1"
 paginate = 7
 canonifyurls = true
 
