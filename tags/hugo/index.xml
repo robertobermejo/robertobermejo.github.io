@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>hugo on Roberto Blog</title>
@@ -12,14 +12,14 @@
     
     
     <item>
-      <title>Hugo Plus Github Equals to Hello World</title>
+      <title>Hugo Plus GitHub Equals to Hello World</title>
       <link>https://robertobermejo.es/2019/09/hugo-plus-github-equals-to-hello-world/</link>
       <pubDate>Sun, 22 Sep 2019 13:05:18 +0200</pubDate>
       
       <guid>https://robertobermejo.es/2019/09/hugo-plus-github-equals-to-hello-world/</guid>
-      <description>Objetive I want to publish some content on my blog using some content generator, and I don&amp;rsquo;t want to hire a hosting. I can use Wordpress, but I prefere to use some tecnlogies that let me know new ways of publish content.
-So, I will use Hugo for this pourpose. There are a lot of tools like Jekyllrb, Ghost, Grav, Pelican and more alternatives.
-The last step will be setup Github actions.</description>
+      <description>Objective I want to publish some content on my blog using some content generator, and I don&amp;rsquo;t want to hire a hosting. I can use Wordpress, but I prefer to use some technologies that let me know new ways of publishing content.
+So, I will use Hugo for this purpose. There are a lot of tools like Jekyllrb, Ghost, Grav, Pelican and more alternatives.
+The last step will be set up GitHub actions.</description>
     </item>
     
   </channel>
